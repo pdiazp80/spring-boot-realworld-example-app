@@ -93,15 +93,115 @@ CREATE TABLE users (
 
 
 
-INSERT INTO articles (id, user_id, slug, title, description, body, created_at, updated_at) VALUES
-('art1', 'user1', 'introduccion-a-spring-boot', 'Introducción a Spring Boot', 'Artículo sobre los conceptos básicos de Spring Boot.', 'Contenido del artículo de introducción a Spring Boot.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('art2', 'user2', 'graphql-en-spring', 'GraphQL en Spring', 'Uso de GraphQL en aplicaciones Spring.', 'Contenido del artículo sobre GraphQL en Spring.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('art3', 'user3', 'docker-para-desarrolladores', 'Docker para desarrolladores', 'Guía de uso de Docker en desarrollo.', 'Contenido de la guía de Docker.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('art4', 'user1', 'microservicios-con-spring-cloud', 'Microservicios con Spring Cloud', 'Conceptos de microservicios con Spring Cloud.', 'Contenido sobre microservicios y Spring Cloud.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('art5', 'user2', 'rest-api-con-spring-boot', 'REST API con Spring Boot', 'Cómo construir APIs REST con Spring Boot.', 'Contenido de REST API con Spring Boot.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('art6', 'user3', 'seguridad-con-spring-security', 'Seguridad con Spring Security', 'Autenticación y autorización en Spring.', 'Contenido sobre Spring Security.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('art7', 'user1', 'test-con-junit', 'Testing con JUnit', 'Buenas prácticas para pruebas unitarias con JUnit.', 'Contenido de testing con JUnit.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('art8', 'user2', 'kubernetes-para-spring', 'Kubernetes para Spring', 'Despliegue de aplicaciones Spring en Kubernetes.', 'Contenido de Kubernetes con Spring.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('art9', 'user3', 'optimizar-spring-boot', 'Optimizar Spring Boot', 'Técnicas para mejorar el rendimiento de Spring Boot.', 'Contenido sobre optimización de Spring Boot.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-('art10', 'user1', 'spring-data-jpa-basico', 'Spring Data JPA Básico', 'Introducción al uso de Spring Data JPA.', 'Contenido de introducción a Spring Data JPA.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
+-- ==========================================================
+-- Fichero: consolidated_insert_pruebas.sql
+-- Objetivo: Poblar datos de prueba en todas las tablas del esquema PostgreSQL de articles
+-- Generado por ChatGPT (OpenAI) a solicitud del usuario
+-- ==========================================================
+
+-- 1️⃣ Tabla: users
+INSERT INTO users (id, username, password, email, bio, image) VALUES
+('u1', 'alice', 'pass123', 'alice@example.com', 'Bio of Alice', 'https://example.com/img/alice.jpg'),
+('u2', 'bob', 'pass456', 'bob@example.com', 'Bio of Bob', 'https://example.com/img/bob.jpg'),
+('u3', 'carol', 'pass789', 'carol@example.com', 'Bio of Carol', 'https://example.com/img/carol.jpg'),
+('u4', 'david', 'pass321', 'david@example.com', 'Bio of David', 'https://example.com/img/david.jpg'),
+('u5', 'eve', 'pass654', 'eve@example.com', 'Bio of Eve', 'https://example.com/img/eve.jpg'),
+('u6', 'frank', 'pass987', 'frank@example.com', 'Bio of Frank', 'https://example.com/img/frank.jpg'),
+('u7', 'grace', 'pass111', 'grace@example.com', 'Bio of Grace', 'https://example.com/img/grace.jpg'),
+('u8', 'heidi', 'pass222', 'heidi@example.com', 'Bio of Heidi', 'https://example.com/img/heidi.jpg'),
+('u9', 'ivan', 'pass333', 'ivan@example.com', 'Bio of Ivan', 'https://example.com/img/ivan.jpg'),
+('u10', 'judy', 'pass444', 'judy@example.com', 'Bio of Judy', 'https://example.com/img/judy.jpg');
+
+-- 2️⃣ Tabla: tags
+INSERT INTO tags (id, name) VALUES
+('t1', 'java'),
+('t2', 'spring'),
+('t3', 'aws'),
+('t4', 'cloud'),
+('t5', 'docker'),
+('t6', 'kubernetes'),
+('t7', 'graphql'),
+('t8', 'react'),
+('t9', 'security'),
+('t10', 'database');
+
+-- 3️⃣ Tabla: articles
+INSERT INTO articles (id, user_id, slug, title, description, body) VALUES
+('a1', 'u1', 'spring-boot-guide', 'Spring Boot Guide', 'Guide for Spring Boot', 'Detailed guide on Spring Boot'),
+('a2', 'u2', 'aws-ec2-setup', 'AWS EC2 Setup', 'Setup EC2', 'How to setup EC2 on AWS'),
+('a3', 'u3', 'docker-basics', 'Docker Basics', 'Basics of Docker', 'Introduction to Docker for beginners'),
+('a4', 'u4', 'kubernetes-deployment', 'Kubernetes Deployment', 'Deploy on K8s', 'Steps to deploy apps on Kubernetes'),
+('a5', 'u5', 'graphql-intro', 'GraphQL Introduction', 'Intro to GraphQL', 'Learning GraphQL basics'),
+('a6', 'u6', 'react-hooks', 'Using React Hooks', 'React Hooks', 'Understanding React Hooks'),
+('a7', 'u7', 'java-concurrency', 'Java Concurrency', 'Concurrency in Java', 'Handling concurrency in Java'),
+('a8', 'u8', 'postgresql-tuning', 'PostgreSQL Tuning', 'Tuning Postgres', 'Performance tuning PostgreSQL'),
+('a9', 'u9', 'api-security', 'API Security Best Practices', 'API Security', 'Best practices for securing APIs'),
+('a10', 'u10', 'flyway-migrations', 'Flyway Migrations', 'DB migrations', 'Using Flyway for database migrations');
+
+-- 4️⃣ Tabla: article_tags
+INSERT INTO article_tags (article_id, tag_id) VALUES
+('a1', 't2'),
+('a1', 't1'),
+('a2', 't3'),
+('a2', 't4'),
+('a3', 't5'),
+('a4', 't6'),
+('a5', 't7'),
+('a6', 't8'),
+('a7', 't1'),
+('a9', 't9');
+
+-- 5️⃣ Tabla: article_favorites
+INSERT INTO article_favorites (article_id, user_id) VALUES
+('a1', 'u2'),
+('a1', 'u3'),
+('a2', 'u1'),
+('a3', 'u4'),
+('a4', 'u5'),
+('a5', 'u6'),
+('a6', 'u7'),
+('a7', 'u8'),
+('a8', 'u9'),
+('a9', 'u10');
+
+-- 6️⃣ Tabla: comments
+INSERT INTO comments (id, body, article_id, user_id) VALUES
+('c1', 'Great article on Spring Boot!', 'a1', 'u2'),
+('c2', 'Thanks for this EC2 guide.', 'a2', 'u3'),
+('c3', 'Docker is awesome!', 'a3', 'u4'),
+('c4', 'Very clear Kubernetes steps.', 'a4', 'u5'),
+('c5', 'GraphQL explained well.', 'a5', 'u6'),
+('c6', 'Hooks are powerful in React.', 'a6', 'u7'),
+('c7', 'Concurrency tips are helpful.', 'a7', 'u8'),
+('c8', 'Helped me tune Postgres.', 'a8', 'u9'),
+('c9', 'API security is important.', 'a9', 'u10'),
+('c10', 'Using Flyway now.', 'a10', 'u1');
+
+-- 7️⃣ Tabla: follows
+INSERT INTO follows (user_id, follow_id) VALUES
+('u1', 'u2'),
+('u2', 'u3'),
+('u3', 'u4'),
+('u4', 'u5'),
+('u5', 'u6'),
+('u6', 'u7'),
+('u7', 'u8'),
+('u8', 'u9'),
+('u9', 'u10'),
+('u10', 'u1');
+
+-- 8️⃣ Tabla: flyway_schema_history
+INSERT INTO flyway_schema_history (installed_rank, version, description, type, script, checksum, installed_by, execution_time, success) VALUES
+(1, '1', 'Initial setup', 'SQL', 'V1__Initial_setup.sql', 123456, 'postgres', 120, true),
+(2, '2', 'Add articles table', 'SQL', 'V2__Add_articles.sql', 234567, 'postgres', 80, true),
+(3, '3', 'Add users table', 'SQL', 'V3__Add_users.sql', 345678, 'postgres', 90, true),
+(4, '4', 'Add tags table', 'SQL', 'V4__Add_tags.sql', 456789, 'postgres', 70, true),
+(5, '5', 'Add comments table', 'SQL', 'V5__Add_comments.sql', 567890, 'postgres', 100, true),
+(6, '6', 'Add article_tags table', 'SQL', 'V6__Add_article_tags.sql', 678901, 'postgres', 110, true),
+(7, '7', 'Add follows table', 'SQL', 'V7__Add_follows.sql', 789012, 'postgres', 60, true),
+(8, '8', 'Add article_favorites table', 'SQL', 'V8__Add_article_favorites.sql', 890123, 'postgres', 75, true),
+(9, '9', 'Add flyway schema history', 'SQL', 'V9__Add_flyway_history.sql', 901234, 'postgres', 65, true),
+(10, '10', 'Add more constraints', 'SQL', 'V10__Add_constraints.sql', 101234, 'postgres', 85, true);
+
+-- Fin del fichero
